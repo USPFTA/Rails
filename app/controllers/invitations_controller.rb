@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_action :authenticate_user_from_token!
+  #before_action :authenticate_user_from_token!
 
   def create
     @invitation = Invitation.new(invitation_params)
