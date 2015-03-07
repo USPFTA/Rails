@@ -7,6 +7,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     if @game
       @game.set_end_time!
+      @game.users << current_user
       @game.save
       render json: {:game => @game}, status: :ok
     else
