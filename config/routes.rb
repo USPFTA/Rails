@@ -12,4 +12,5 @@ Rails.application.routes.draw do
 
 
   resources :invitations, :only => [:create, :show, :index]
+  resources :flags, :only => [:create, :show, :index, :destroy]
 end
