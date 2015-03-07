@@ -29,27 +29,68 @@ This application requires:
 
 Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
 
-Getting Started
----------------
-
-Documentation and Support
--------------------------
-
-Issues
--------------
-
-Similar Projects
-----------------
-
-Contributing
-------------
-
-Credits
+ROUTING
 -------
 
-License
--------
-=======
-# Rails
-back-end
->>>>>>> 93a0e36b92fa33f409ab58edea66b6c7e843e7ae
+
+To create a new user
+
+
+  POST /users
+
+      JSON requested: {user: {username: string, email: string, password: string}}`
+
+    if the user is successfully created
+  
+      JSON returned: {user: {email: string, id: string, total_points: integer}}, status: :created
+
+    else
+
+      status: {user: {user.errors}}, status: :ok
+
+To view a list of all users
+
+  GET /users
+
+      JSON requested: {user: {id: integer}}
+
+    return:
+
+      JSON returned: {users: {user: {email: string, id: integer, total_points: integer}... for each user}}, status: :ok
+
+
+To view an individual user's information
+
+  GET /users/:id
+
+      JSON requested: {user: {id: integer}}
+
+    return if ID sent in JSON matches ID in route
+
+      JSON returned: {user: {username: string, email: string, id: integer, game_id: nil OR integer}}, status: :ok
+
+    else
+
+      JSON returned: {user: nil}, status: :unprocessable_entity
+
+
+To sign in a user
+
+  POST /users/sign_in
+
+      JSON requested: {user: {email: string, password: string}}
+
+    return if successful
+
+      JSON returned: {user: {email: string, id: string, total_points: integer, game_id: nil OR integer}}, status: :ok
+
+    else
+
+      JSON returned: {user: nil}, status: unprocessable_entity
+
+
+
+
+
+
+
