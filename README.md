@@ -42,7 +42,7 @@ To create a new user
 
     if the user is successfully created
   
-      JSON returned: {user: {email: string, id: string, total_points: integer}}, status: :created (status 201)
+      JSON returned: {user: {email: string, id: string, authentication_token: string}}, status: :created (status 201)
 
     else
 
