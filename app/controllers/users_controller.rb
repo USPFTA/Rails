@@ -1,15 +1,23 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
 
-  def index
-    @users = User.all
+  def show
+    @user = current_user
+    render json: { :user => @user }, status: :ok
   end
 
-  def show
-    @user = User.find(params[:id])
-    unless @user == current_user
-      redirect_to :back, :alert => "Access denied."
-    end
+  def index
+    @users = User.all
+    render json: { :users => @users}, status: :ok
   end
+
+  
+
+
+  private
+
+    def as_json(opts={})
+      super(:only => [:id, :email])
+    end
 
 end
