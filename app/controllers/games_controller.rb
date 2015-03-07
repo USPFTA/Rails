@@ -5,10 +5,9 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-    if @game
-      @game.set_end_time!
-      @game.users << current_user
-      @game.save
+    @game.set_end_time!
+    @game.users << current_user
+    if @game.save
       render json: {:game => @game}, status: :ok
     else
       render json: {:error => @game.errors.full_messages}, status: :unprocessable_entity
