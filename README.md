@@ -44,11 +44,11 @@ To create a new user
 
     if the user is successfully created NOTE: THE USER IS NOT SIGNED IN AFTER REGISTRATION
   
-      JSON returned: {user: {email: string, id: string, authentication_token: string}}, status: :created (status 201)
+      JSON returned: {user: {email: string, id: string, authentication-token: string}}, status: :created (status 201)
 
     else
 
-      status: {user: {user.errors}}, status: :ok
+      status: {errors: {errors thrown}}, status: :ok
 
 To view a list of all users
 -------
@@ -69,7 +69,7 @@ To view an individual user's information
 
     else
 
-      JSON returned: {user: nil}, status: :unprocessable_entity (status 422)
+      JSON returned: {errors: {errors thrown}}, status: :unprocessable_entity (status 422)
 
 
 To sign in a user
@@ -85,7 +85,7 @@ To sign in a user
 
     else
 
-      JSON returned: {user: nil}, status: unprocessable_entity (status 422)
+      JSON returned: {errors: {errors thrown}}, status: unprocessable_entity (status 422)
 
 
 
@@ -106,7 +106,7 @@ To create a game
 
     else
 
-      JSON returned: {error: {list of errors thrown}}, status: :unprocessable_entity (status 422)
+      JSON returned: {errors: {list of errors thrown}}, status: :unprocessable_entity (status 422)
 
 
   GET /games/:id/admin
@@ -137,7 +137,7 @@ To create a game
 
     else
 
-      JSON returned: {error => "Authentication Failure! BOO!"}, status: :unauthenticated (status 500)
+      JSON returned: {errors: {errors thrown}}, status: :unprocessable_entity (status 422)
 
 
 To send Invitations to Users
@@ -153,7 +153,79 @@ To send Invitations to Users
 
     else
 
-      JSON returned: {error: {all errors thrown}}, status: :unprocessable_entity (status 422)
+      JSON returned: {errors: {all errors thrown}}, status: :unprocessable_entity (status 422)
+
+
+iOS - To View All of User's Invitations
+-------
+
+  GET /invitations/users/:id
+
+    if the user has any invitations
+
+      JSON returned: {invitations: {
+                                  invitation: { inviter_id: integer
+                                              invited_id: integer (this is the current user)
+                                              game_id: integer}
+                                  invitation: { inviter_id: integer
+                                              invited_id: integer (this is the current user)
+                                              game_id: integer}
+                                  }
+                            }, status: :ok (status 200)
+
+    else
+
+      JSON returned: {invitations: nil}, status: :ok (status 200)
+
+
+iOS - To Accept an Invitation
+-------
+  
+  POST /invitations/:id/accept
+
+      JSON requested: {invitation: {inviter_id: integer, invited_id: integer, game_id: integer}}
+
+    if the game is joined successfully
+
+      JSON returned: {game: { center_lat: decimal,
+                              center_long: decimal,
+                              radius: decimal,
+                              starts_at: timestamp,
+                              ends_at: timestamp}
+                      players: { user: {
+                                  id: integer, 
+                                  email: string, 
+                                  username: string},
+                                 user: {
+                                  id: integer, 
+                                  email: string, 
+                                  username: string}
+                            }
+                        }                              
+
+    else
+
+      JSON returned: {errors: {errors thrown}}, status: :unprocessable_entity (status 422)
+
+
+iOS - To Decline an Invitation
+-------
+
+  POST /invitations/:id/decline
+
+      JSON requested: {invitation: {inviter_id: integer, invited_id: integer, game_id: integer}}
+
+    if the invitation was successfully declined/destroyed
+
+      JSON returned: {invitation: nil}, status: :ok (status 200)
+
+    else
+
+      JSON returned: {errors: {errors thrown}}, status: :unprocessable_entity (status 422)
+
+
+
+
 
 
 

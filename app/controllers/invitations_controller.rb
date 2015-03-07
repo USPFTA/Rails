@@ -19,6 +19,19 @@ class InvitationsController < ApplicationController
     render json: {:user => @user}, status: :ok
   end
 
+  def index
+    @players = []
+    User.where(current_flag: nil).find_each do |user|
+      @players << user
+    end
+    render json: {:players => @players}, status: :ok
+  end
+
+
+
+  # iOS specific controller methods
+
+
   def my_invitations
     @user = User.find(params[:id])
     @invitations = []
@@ -33,17 +46,8 @@ class InvitationsController < ApplicationController
     end
   end
 
-  def index
-    @players = []
-    User.where(current_flag: nil).find_each do |user|
-      @players << user
-    end
-    render json: {:players => @players}, status: :ok
-  end
-
 
   def accept_invitation
-    @user = User.find(@invitation.invited_id)
     @game = Game.find(@invitation.game_id)
     binding.pry
     if @game.users << @user
