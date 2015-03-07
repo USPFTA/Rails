@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Tiy Hackathon
 ================
 
@@ -48,3 +49,7 @@ Credits
 
 License
 -------
+=======
+# Rails
+back-end
+>>>>>>> 93a0e36b92fa33f409ab58edea66b6c7e843e7ae
