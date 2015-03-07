@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :add_players, :index, :finished]
-  #before_action :authenticate_user_from_token!
+  before_action :authenticate_user_from_token!
   
 
   def create

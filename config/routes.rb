@@ -6,5 +6,10 @@ Rails.application.routes.draw do
   get '/games/:id/admin', to: 'games#index'
   post '/games/:id/finished', to: 'games#finished'
 
-  resources :invitations
+  get  '/invitations/users/:id', to: 'invitations#my_invitations'
+  post '/invitations/:id/accept', to: 'invitations#accept_invitation'
+  post '/invitations/:id/decline', to: 'invitations#decline_invitation'
+
+
+  resources :invitations, :only => [:create, :show, :index]
 end
