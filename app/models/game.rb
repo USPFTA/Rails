@@ -10,12 +10,15 @@ end
   has_many :flags, through: :game_flags
   has_many :game_flags
 
+  # validations
 
   validates :center_lat, presence: true
   validates :center_long, presence: true
   validates :radius, presence: true
   validates :starts_at, presence: true
   validates :ends_at, presence: true
+
+  validates_length_of :users, maximum: 10
 
 
 
