@@ -11,6 +11,23 @@ class User < ActiveRecord::Base
 
   before_save :ensure_authentication_token
 
+  
+
+
+  def my_invitations
+    @invitations = []
+    Invitation.where(invited_id: self.id).find_each do |invite|
+      @invitations << invite
+    end
+    @invitations
+  end
+
+
+
+
+  # AUTHENTICATION SHIT, DO NOT TOUCH THIS
+
+
   def ensure_authentication_token
     if authentication_token.blank?
        self.authentication_token = generate_authentication_token

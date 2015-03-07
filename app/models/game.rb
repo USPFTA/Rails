@@ -21,6 +21,13 @@ class Game < ActiveRecord::Base
     self.ends_at = (self.starts_at + self.duration.hour)
   end
 
+  def my_invitations
+    @invitations = []
+    Invitation.where(invited_id: @user.id).find_each do |invite|
+      @invitations << invite
+    end
+    @invitations
+  end
 
 
 
