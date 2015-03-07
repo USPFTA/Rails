@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 20150307152009) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "games", force: :cascade do |t|
+    t.decimal  "center_lat",      precision: 8, scale: 6
+    t.decimal  "center_long",     precision: 8, scale: 6
+    t.decimal  "radius",          precision: 4, scale: 3
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.integer  "number_of_flags"
+    t.boolean  "finished",                                default: false
+  end
+
   create_table "players", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "game_id"
@@ -40,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150307152009) do
     t.string   "username"
     t.string   "authentication_token"
     t.integer  "total_points",           default: 0
+    t.integer  "current_flag"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", using: :btree

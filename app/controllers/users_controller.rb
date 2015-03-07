@@ -20,4 +20,5 @@ class UsersController < ApplicationController
       super(:only => [:id, :email])
     end
 
+
 end
