@@ -32,7 +32,8 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 ROUTING
 -------
 
-
+  USER ROUTING
+  -------
 To create a new user
 -------
 

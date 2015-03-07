@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :index, :finished]
-  #before_action :authenticate_user_from_token!
+  before_action :set_game, only: [:show, :add_players, :index, :finished]
+  before_action :authenticate_user_from_token!
   
 
   def create
@@ -12,6 +12,24 @@ class GamesController < ApplicationController
       render json: {:error => @game.errors.full_messages}, status: :unprocessable_entity
     end
   end
+
+  def available_players
+    @players = []
+    User.where(current_flag: nil).find_each do |user|
+      @players << user
+    end
+    render json: {:players => @players}, status: :ok
+  end
+
+  def add_players
+    @players = player_params[:players]
+    @players.each do |user_id|
+      user = User.find(user_id)
+      @game.players.create(user.user_id, @game.id)
+    end
+  end
+
+
 
   def show
     if @game
@@ -50,6 +68,10 @@ class GamesController < ApplicationController
 
     def game_params
       params.require(:game).permit(:center_lat, :center_long, :starts_at, :ends_at, :radius, :number_of_flags)
+    end
+
+    def player_params
+      params.require(:players).permit(:user_id)
     end
 
 end

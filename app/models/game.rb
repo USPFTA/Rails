@@ -11,8 +11,8 @@ class Game < ActiveRecord::Base
   validates :center_lat, presence: true
   validates :center_long, presence: true
   validates :radius, presence: true
-  #validates :starts_at, presence: true
-  #validates :ends_at, presence: true
+  validates :starts_at, presence: true
+  validates :ends_at, presence: true
   validates :number_of_flags, presence: true
 
 
@@ -22,7 +22,7 @@ class Game < ActiveRecord::Base
   def finished?
     check_time = Time.now
     if check_time < self.ends_at
-      if self.game_flags.count < (self.players.count*self.players.count)
+      if self.game_flags.count < (self.players.count*self.players.count-self.players.count)
         self.finished = false
         self.save
       else
