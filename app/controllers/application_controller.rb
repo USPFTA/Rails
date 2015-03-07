@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   def authenticate_user_from_token!
-    user_token = request.headers['authentication_token']
-    user_token ||= params[:auth_token].presence
+    user_token = request.headers['authentication-token']
+    binding.pry
     user       = user_token && User.find_by_authentication_token(user_token)
 
     if user
