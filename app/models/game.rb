@@ -1,7 +1,4 @@
 class Game < ActiveRecord::Base
-<<<<<<< HEAD
-end
-=======
 
   # make sure to get associations set up here!
 
@@ -48,4 +45,3 @@ end
 
 
 end
->>>>>>> master
