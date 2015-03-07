@@ -1,12 +1,9 @@
 class Game < ActiveRecord::Base
 
-
   # make sure to get associations set up here!
-
-  has_many :users, through: :players
   has_many :players
-  has_many :flags, through: :game_flags
-  has_many :game_flags
+  has_many :users, through: :players
+  has_many :flags, through: :players
 
   # validations
 
@@ -43,11 +40,4 @@ class Game < ActiveRecord::Base
     end
   end
 
-
-
-
-
-
-
 end
-
