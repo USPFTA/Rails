@@ -55,9 +55,7 @@ To view a list of all users
 
   GET /users
 
-      JSON requested: {user: {id: integer}}
-
-    return:
+    if authenticated
 
       JSON returned: {users: {user: {email: string, id: integer, total_points: integer}... for each user}}, status: :ok (status 200)
 
@@ -66,10 +64,6 @@ To view an individual user's information
 -------
 
   GET /users/:id
-
-      JSON requested: {user: {id: integer}}
-
-    return if ID sent in JSON matches ID in route
 
       JSON returned: {user: {username: string, email: string, id: integer, game_id: nil OR integer}}, status: :ok (status 200)
 
@@ -92,6 +86,78 @@ To sign in a user
     else
 
       JSON returned: {user: nil}, status: unprocessable_entity (status 422)
+
+
+
+  GAME ROUTING
+  -------
+
+
+To create a game
+-------
+
+  POST /games/new
+
+      JSON requested: {game: {center_lat: up to 6 decimal places, center_long: up to 6 decimal places, radius: up to 3 decimal places, starts_at: string (this will be a time... example: 5:00pm), duration: integer}}
+
+    if successful:
+
+      JSON returned: {game: {center_lat: up to 6 decimal places, center_long: up to 6 decimal places, radius: up to 3 decimal places, starts_at: timestamp, game_duration: integer}}, status: :created (status 201)
+
+    else
+
+      JSON returned: {error: {list of errors thrown}}, status: :unprocessable_entity (status 422)
+
+
+  GET /games/:id/admin
+
+      JSON requested: only authentication_token
+
+    if authenticated
+
+      JSON returned: {game: {
+                          center_lat: up to 6 decimal places, 
+                          center_long: up to 6 decimal places, 
+                          radius: up to 3 decimal places, 
+                          starts_at: timestamp, 
+                          ends_at: timestamp}, 
+                      players: {
+                              user: {
+                                  id: integer, 
+                                  email: string, 
+                                  username: string}
+                              user: {
+                                  id: integer, 
+                                  email: string, 
+                                  username: string}
+                                  }
+                                }
+                            }
+                        } status: :ok (status 200)
+
+    else
+
+      JSON returned: {error => "Authentication Failure! BOO!"}, status: :unauthenticated (status 500)
+
+
+To send Invitations to Users
+-------
+
+  POST /invitations/new
+
+      JSON requested: {inviter_id (will be current user's ID): integer, invited_id: integer, game_id: integer}
+
+    if successful
+
+      JSON returned: {invitation: {inviter_id: integer, invited_id: integer, game_id: integer}}, status: :created (status 201)
+
+    else
+
+      JSON returned: {error: {all errors thrown}}, status: :unprocessable_entity (status 422)
+
+
+
+
 
 
 

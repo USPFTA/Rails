@@ -19,6 +19,10 @@ class Game < ActiveRecord::Base
 
 
 
+  def set_end_time!
+    self.ends_at = (self.starts_at + self.duration.hour)
+  end
+
 
 
 
@@ -37,11 +41,5 @@ class Game < ActiveRecord::Base
       self.save
     end
   end
-
-
-
-
-
-
 
 end

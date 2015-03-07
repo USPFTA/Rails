@@ -1,5 +1,5 @@
 class InvitationsController < ApplicationController
-  before_action :authenticate_user_from_token!
+  #before_action :authenticate_user_from_token!
 
   def create
     @invitation = Invitation.new(invitation_params)
@@ -17,6 +17,18 @@ class InvitationsController < ApplicationController
     render json: {:user => @user}, status: :ok
   end
 
+  def my_invitations
+    @user = current_user
+    @invitations = []
+    Invitation.where(invited_id: @user.id).find_each |invite|
+      @invitations << invite
+    end
+    if @invitations.length > 0
+      render json: {:invitations => @invitations}, status: :ok
+    else
+      render json: {:invitations => nil}, status: :ok
+    end
+  end
 
   def index
     @players = []
