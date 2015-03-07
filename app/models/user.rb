@@ -18,14 +18,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.in_game?
-    if current_flag == nil
-      false
-    else
-      true
-    end
-  end
-
   def as_json(opts={})
     super(:only => [:email, :authentication_token, :experience, :id])
   end

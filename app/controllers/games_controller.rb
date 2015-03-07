@@ -1,11 +1,14 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :add_players, :index, :finished]
-  before_action :authenticate_user_from_token!
+  #before_action :authenticate_user_from_token!
   
 
   def create
     @game = Game.new(game_params)
     if @game
+      binding.pry
+      @game.ends_at = @game.starts_at + @game.duration.hour
+      binding.pry
       @game.save
       render json: {:game => @game}, status: :ok
     else
@@ -67,7 +70,7 @@ class GamesController < ApplicationController
     end
 
     def game_params
-      params.require(:game).permit(:center_lat, :center_long, :starts_at, :ends_at, :radius, :number_of_flags)
+      params.require(:game).permit(:center_lat, :center_long, :starts_at, :duration, :radius, :number_of_flags)
     end
 
     def player_params

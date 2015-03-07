@@ -4,7 +4,7 @@ class Game < ActiveRecord::Base
 
   has_many :users, through: :players
   has_many :players
-  has_many :flags
+  has_many :flags, through: :game_flags
   has_many :game_flags
 
 
@@ -13,7 +13,7 @@ class Game < ActiveRecord::Base
   validates :radius, presence: true
   validates :starts_at, presence: true
   validates :ends_at, presence: true
-  validates :number_of_flags, presence: true
+
 
 
 
