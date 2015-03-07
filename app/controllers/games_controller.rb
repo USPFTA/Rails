@@ -6,9 +6,7 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game
-      binding.pry
-      @game.ends_at = @game.starts_at + @game.duration.hour
-      binding.pry
+      @game.set_end_time!
       @game.save
       render json: {:game => @game}, status: :ok
     else
@@ -70,7 +68,7 @@ class GamesController < ApplicationController
     end
 
     def game_params
-      params.require(:game).permit(:center_lat, :center_long, :starts_at, :duration, :radius, :number_of_flags)
+      params.require(:game).permit(:center_lat, :center_long, :starts_at, :duration, :radius)
     end
 
     def player_params

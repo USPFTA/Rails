@@ -1,7 +1,5 @@
 class Game < ActiveRecord::Base
-<<<<<<< HEAD
-end
-=======
+
 
   # make sure to get associations set up here!
 
@@ -21,6 +19,10 @@ end
   validates_length_of :users, maximum: 10
 
 
+
+  def set_end_time!
+    self.ends_at = (self.starts_at + self.duration.hour)
+  end
 
 
 
@@ -48,4 +50,4 @@ end
 
 
 end
->>>>>>> master
+
