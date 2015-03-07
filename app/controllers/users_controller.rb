@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   private
 
     def as_json(opts={})
-      super(:only => [:id, :email, :username])
+      super(:only => [:id, :email, :username, :total_points])
     end
 
 

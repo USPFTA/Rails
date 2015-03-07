@@ -20,7 +20,7 @@ class InvitationsController < ApplicationController
 
   def index
     @players = []
-    User.where(current_flag: nil).find_each do |user|
+    User.where(in_game: false).find_each do |user|
       @players << user
     end
     render json: {:players => @players}, status: :ok
@@ -32,11 +32,7 @@ class InvitationsController < ApplicationController
 
 
   def my_invitations
-    @user = User.find(params[:id])
-    @invitations = []
-    Invitation.where(invited_id: @user.id).find_each do |invite|
-      @invitations << invite
-    end
+    @invitations = current_user.my_invitations
     if @invitations.length > 0
       render json: {:invitations => @invitations}, status: :ok
     else
@@ -47,7 +43,9 @@ class InvitationsController < ApplicationController
 
   def accept_invitation
     @game = Game.find(@invitation.game_id)
-    if @game.users << @user
+    if @game.users << current_user
+      current_user.in_game = true
+      current_user.save
       @invitation.destroy
       render json: {:game => @game}, status: :accepted
     else
