@@ -21,6 +21,20 @@ class User < ActiveRecord::Base
     super(:only => [:email, :authentication_token, :experience, :id])
   end
 
+  def active_game
+    # returns the user's active game if it exists
+    self.games.where(finished: false).first
+  end
+
+  def active_player
+    # returns the active player for this user, i.e, the player for the game he is in
+    if active_game
+      return active_game.players.find_by_user_id(self.id)
+    else
+      return nil
+    end
+  end
+
  private
  def generate_authentication_token
    loop do
