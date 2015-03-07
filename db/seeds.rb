@@ -5,5 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
+User.delete_all
+User.create(email: 'evan@user.com', password: 'password', username: 'evan')
+User.create(email: 'bob@user.com', password: 'password', username: 'bob')
+User.create(email: 'matt@user.com', password: 'password', username: 'matt')
+User.create(email: 'stephen@user.com', password: 'password', username: 'stephen')
+User.create(email: 'mollie@user.com', password: 'password', username: 'mollie')
+User.create(email: 'taco@user.com', password: 'password', username: 'taco')
