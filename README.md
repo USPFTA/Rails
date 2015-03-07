@@ -42,7 +42,7 @@ To create a new user
 
     if the user is successfully created
   
-      JSON returned: {user: {email: string, id: string, total_points: integer}}, status: :created
+      JSON returned: {user: {email: string, id: string, total_points: integer}}, status: :created (status 201)
 
     else
 
@@ -56,7 +56,7 @@ To view a list of all users
 
     return:
 
-      JSON returned: {users: {user: {email: string, id: integer, total_points: integer}... for each user}}, status: :ok
+      JSON returned: {users: {user: {email: string, id: integer, total_points: integer}... for each user}}, status: :ok (status 200)
 
 
 To view an individual user's information
@@ -67,11 +67,11 @@ To view an individual user's information
 
     return if ID sent in JSON matches ID in route
 
-      JSON returned: {user: {username: string, email: string, id: integer, game_id: nil OR integer}}, status: :ok
+      JSON returned: {user: {username: string, email: string, id: integer, game_id: nil OR integer}}, status: :ok (status 200)
 
     else
 
-      JSON returned: {user: nil}, status: :unprocessable_entity
+      JSON returned: {user: nil}, status: :unprocessable_entity (status 422)
 
 
 To sign in a user
@@ -82,11 +82,11 @@ To sign in a user
 
     return if successful
 
-      JSON returned: {user: {email: string, id: string, total_points: integer, game_id: nil OR integer}}, status: :ok
+      JSON returned: {user: {email: string, id: string, total_points: integer, game_id: nil OR integer}}, status: :ok (status 200)
 
     else
 
-      JSON returned: {user: nil}, status: unprocessable_entity
+      JSON returned: {user: nil}, status: unprocessable_entity (status 422)
 
 
 

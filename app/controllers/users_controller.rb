@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user_from_token!
 
   def show
     @user = current_user
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     render json: { :users => @users}, status: :ok
   end
 
-  
+
 
 
   private
