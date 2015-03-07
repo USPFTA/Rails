@@ -12,6 +12,7 @@ gem 'devise'
 gem 'pg'
 gem 'puma'
 gem 'rack-cors'
+gem 'geocoder'
 group :development do
   gem 'pry'
   gem 'better_errors'
