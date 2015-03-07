@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user_from_token!
     user_token = request.headers['authentication-token']
-    binding.pry
     user       = user_token && User.find_by_authentication_token(user_token)
 
     if user
