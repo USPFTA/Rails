@@ -7,13 +7,12 @@ class Game < ActiveRecord::Base
   has_many :flags
   has_many :game_flags
 
-  before_action :set_game
 
   validates :center_lat, presence: true
-  validates :center_log, presence: true
+  validates :center_long, presence: true
   validates :radius, presence: true
-  validates :starts_at, presence: true
-  validates :ends_at, presence: true
+  #validates :starts_at, presence: true
+  #validates :ends_at, presence: true
   validates :number_of_flags, presence: true
 
 

@@ -34,6 +34,7 @@ ROUTING
 
 
 To create a new user
+-------
 
 
   POST /users
@@ -49,6 +50,7 @@ To create a new user
       status: {user: {user.errors}}, status: :ok
 
 To view a list of all users
+-------
 
   GET /users
 
@@ -60,6 +62,7 @@ To view a list of all users
 
 
 To view an individual user's information
+-------
 
   GET /users/:id
 
@@ -75,6 +78,7 @@ To view an individual user's information
 
 
 To sign in a user
+-------
 
   POST /users/sign_in
 
