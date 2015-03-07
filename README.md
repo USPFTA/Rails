@@ -40,7 +40,7 @@ To create a new user
 
       JSON requested: {user: {username: string, email: string, password: string}}`
 
-    if the user is successfully created
+    if the user is successfully created NOTE: THE USER IS NOT SIGNED IN AFTER REGISTRATION
   
       JSON returned: {user: {email: string, id: string, authentication_token: string}}, status: :created (status 201)
 
