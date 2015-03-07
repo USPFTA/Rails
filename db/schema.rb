@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307165046) do
+ActiveRecord::Schema.define(version: 20150307190736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,15 +25,15 @@ ActiveRecord::Schema.define(version: 20150307165046) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.decimal  "center_lat",      precision: 8, scale: 6
-    t.decimal  "center_long",     precision: 8, scale: 6
-    t.decimal  "radius",          precision: 4, scale: 3
+    t.decimal  "center_lat",      precision: 12, scale: 10
+    t.decimal  "center_long",     precision: 12, scale: 10
+    t.decimal  "radius",          precision: 4,  scale: 3
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.integer  "number_of_flags"
-    t.boolean  "finished",                                default: false
-    t.integer  "duration",                                default: 4
-    t.string   "name",                                    default: "My Game"
+    t.boolean  "finished",                                  default: false
+    t.integer  "duration",                                  default: 4
+    t.string   "name",                                      default: "My Game"
   end
 
   create_table "invitations", force: :cascade do |t|
