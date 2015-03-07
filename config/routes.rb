@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   post '/games/new', to: 'games#create'
   get '/games/:id/admin', to: 'games#index'
   post '/games/:id/finished', to: 'games#finished'
+
+  resources :invitations
 end

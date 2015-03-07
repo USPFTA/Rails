@@ -14,10 +14,12 @@ class UsersController < ApplicationController
 
 
 
+
+
   private
 
     def as_json(opts={})
-      super(:only => [:id, :email])
+      super(:only => [:id, :email, :username])
     end
 
 

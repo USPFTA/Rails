@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150307152009) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150307152009) do
     t.datetime "ends_at"
     t.integer  "number_of_flags"
     t.boolean  "finished",                                default: false
+    t.integer  "duration",                                default: 4
   end
 
   create_table "players", force: :cascade do |t|
