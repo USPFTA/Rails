@@ -11,6 +11,9 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'pg'
 gem 'puma'
+gem 'rack-cors'
+
+
 group :development do
   gem 'pry'
   gem 'better_errors'
@@ -24,5 +27,4 @@ group :development do
 end
 group :production do
   gem 'rails_12factor'
-  gem 'rack-cors'
 end
