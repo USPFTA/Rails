@@ -21,7 +21,12 @@ e=User.create(email: 'mollie@user.com', password: 'password', username: 'mollie'
 f=User.create(email: 'taco@user.com', password: 'password', username: 'taco')
 
 
-active_game = Game.create(name: "GA Tech", finished: false)
+active_game=Game.create(name: "MLK Library", center_lat: 0, center_long: 0, radius: 0.5, 
+			  duration: 4, starts_at: '5:00pm', ends_at: '6:00pm')
+
+inactive_game=Game.create(name: "GA Tech", center_lat: 0, center_long: 0, radius: 0.5, 
+			  duration: 4, starts_at: '5:00pm', ends_at: '6:00pm', finished: true)
+
 
 p1=Player.create(game_id: active_game.id, user_id: a.id)
 p2=Player.create(game_id: active_game.id, user_id: b.id)

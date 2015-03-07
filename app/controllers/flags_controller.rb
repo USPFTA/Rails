@@ -9,7 +9,7 @@ class FlagsController < ApplicationController
     @flag.player = @player
     
     if @flag.save
-      render json: {:flag: @flag}, status: :created
+      render json: {:flag => @flag}, status: :created
     else
       render json: { :error => @flag.errors.full_messages}, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class FlagsController < ApplicationController
     end
   
   def flag_params
-    params.require(:flag).permit(:membership_id, :flag_lat, :flag_long)
+    params.require(:flag).permit(:player_id, :flag_lat, :flag_long)
   end
 
 end
