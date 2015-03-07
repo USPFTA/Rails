@@ -3,7 +3,6 @@ class InvitationsController < ApplicationController
   before_action :set_invitation, :only => [:accept_invitation, :decline_invitation]
 
   def create
-    binding.pry
     @invitation = Invitation.new(invitation_params)
     if @invitation.save
       render json: {:invitation => @invitation}, status: :ok
@@ -35,7 +34,6 @@ class InvitationsController < ApplicationController
   def my_invitations
     @user = User.find(params[:id])
     @invitations = []
-    binding.pry
     Invitation.where(invited_id: @user.id).find_each do |invite|
       @invitations << invite
     end
@@ -49,7 +47,6 @@ class InvitationsController < ApplicationController
 
   def accept_invitation
     @game = Game.find(@invitation.game_id)
-    binding.pry
     if @game.users << @user
       @invitation.destroy
       render json: {:game => @game}, status: :accepted
