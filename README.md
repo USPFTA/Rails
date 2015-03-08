@@ -108,12 +108,12 @@ To view an individual game (from a PC)
                           radius: up to 3 decimal places, 
                           starts_at: timestamp, 
                           ends_at: timestamp}, 
-                      players: {
-                              player: {
+                      users: {
+                              user: {
                                   id: integer, 
                                   email: string, 
                                   username: string}
-                              player: {
+                              user: {
                                   id: integer, 
                                   email: string, 
                                   username: string}
