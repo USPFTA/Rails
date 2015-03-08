@@ -4,8 +4,7 @@ class FlagsController < ApplicationController
 
   def create
     @player = current_user.players.last
-    @flag = Flag.new(flag_params.except(:name))
-    @flag.name = flag_params(:name)
+    @flag = Flag.new(flag_params)
     @flag.player_id = @player.id
     flag_coordinates = [@flag.flag_lat, @flag.flag_long]
     @game = @player.game
