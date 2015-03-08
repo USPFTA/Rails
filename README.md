@@ -1,4 +1,5 @@
 TIY Hackathon
+=========
 
 Ruby on Rails
 -------------
@@ -14,7 +15,10 @@ ROUTING
 -------
 
 USER ROUTING
-  -------
+========
+
+
+
 To create a new user
 -------
 
@@ -71,7 +75,7 @@ To sign in a user
 
 
 GAME ROUTING
-  -------
+========
 
 
 To create a game
@@ -123,7 +127,7 @@ To create a game
 
 
 INVITATION ROUTING
-  -------
+========
 
 
 To send Invitations to Users
@@ -212,7 +216,7 @@ iOS - To Decline an Invitation
 
 
 FLAG ROUTING
-  -------
+=========
 
 
 iOS - To Place a Flag
@@ -247,7 +251,7 @@ iOS - To Delete a Flag (before game starts)
 
 
 TAG ROUTING
-  -------
+=========
 
   
 iOS - To Tag a Flag
