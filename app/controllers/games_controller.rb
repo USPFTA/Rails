@@ -42,7 +42,7 @@ class GamesController < ApplicationController
 
   def index
     if @game
-      render json: {:game => @game, :players => @game.players, :flags => @game.flags}, status: :ok
+      render json: {:game => @game, :users => @game.users, :flags => @game.flags}, status: :ok
     else
       render json: {:game => nil}, status: :unprocessable_entity
     end
