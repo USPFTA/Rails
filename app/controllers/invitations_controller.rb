@@ -56,6 +56,7 @@ class InvitationsController < ApplicationController
   end
 
   def decline_invitation
+    @invitation = Invitation.find(params[:id])
     if @invitation.destroy
       render json: {:invitation => nil}, status: :accepted
     else
