@@ -119,7 +119,19 @@ To view an individual game (from a PC)
                                   username: string}
                                   }
                                 }
-                            }
+                            },
+                      players: {
+                              player: {
+                                  id: integer
+                                  score: integer
+                                  user_id: integer
+                                  game_id: integer},
+                              player: {
+                                  id: integer
+                                  score: integer
+                                  user_id: integer
+                                  game_id: integer}
+                                },
                       flags: {
                               flag: {
                                   flag_id: integer,
