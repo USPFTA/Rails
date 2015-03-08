@@ -13,7 +13,8 @@ Player.delete_all
 
 
 
-a=User.create(email: 'evan@user.com', password: 'password', username: 'evan')
+puts 'creating users'
+a=User.create(email:  'evan@user.com', password: 'password', username: 'evan', authentication_token: '123' )
 b=User.create(email: 'bob@user.com', password: 'password', username: 'bob')
 c=User.create(email: 'matt@user.com', password: 'password', username: 'matt')
 d=User.create(email: 'stephen@user.com', password: 'password', username: 'stephen')
@@ -21,6 +22,7 @@ e=User.create(email: 'mollie@user.com', password: 'password', username: 'mollie'
 f=User.create(email: 'taco@user.com', password: 'password', username: 'taco')
 
 
+puts 'creating games'
 active_game=Game.create(name: "MLK Library", center_lat: 0, center_long: 0, radius: 0.5, 
 			  duration: 4, starts_at: '5:00pm', ends_at: '6:00pm')
 
@@ -28,13 +30,15 @@ inactive_game=Game.create(name: "GA Tech", center_lat: 0, center_long: 0, radius
 			  duration: 4, starts_at: '5:00pm', ends_at: '6:00pm', finished: true)
 
 
+puts 'creating players'
 p1=Player.create(game_id: active_game.id, user_id: a.id)
 p2=Player.create(game_id: active_game.id, user_id: b.id)
 p3=Player.create(game_id: active_game.id, user_id: c.id)
 
-Flag.create(player_id: p1.id)
-Flag.create(player_id: p2.id)
-Flag.create(player_id: p3.id)
+puts 'creating flags'
+Flag.create(player_id: p1.id, flag_lat: 0, flag_long: 0)
+Flag.create(player_id: p2.id, flag_lat: 0, flag_long: 0)
+Flag.create(player_id: p3.id, flag_lat: 0, flag_long: 0)
 
 
 inactive_game = Game.create(name: "Inactive", finished: true)

@@ -21,7 +21,7 @@ class TagsController < ApplicationController
   private
 
   def tag_params
-  	params.require(:tag).permit(:flag_id)
+  	params.require(:tag).permit(:flag_id, :image)
   end
 
   def as_json

@@ -14,7 +14,7 @@ class Game < ActiveRecord::Base
   validates :ends_at, presence: true
 
   validates_length_of :users, maximum: 10
-  validates :user_id, uniqueness: {scope: :users}
+#  validates :user_id, uniqueness: {scope: :users}
 
 
 
