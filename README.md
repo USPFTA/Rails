@@ -155,7 +155,7 @@ To View an Individual Game (from iOS)
 
   GET /games/:id
 
-      JSON requested: only authentication_token
+      query params: only authentication_token
 
     if authenticated
 
