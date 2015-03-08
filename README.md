@@ -32,7 +32,7 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 ROUTING
 -------
 
-  USER ROUTING
+USER ROUTING
   -------
 To create a new user
 -------
@@ -89,7 +89,7 @@ To sign in a user
 
 
 
-  GAME ROUTING
+GAME ROUTING
   -------
 
 
@@ -141,7 +141,7 @@ To create a game
 
 
 
-  INVITATION ROUTING
+INVITATION ROUTING
   -------
 
 
@@ -230,7 +230,7 @@ iOS - To Decline an Invitation
 
 
 
-  FLAG ROUTING
+FLAG ROUTING
   -------
 
 
@@ -265,7 +265,7 @@ iOS - To Delete a Flag (before game starts)
 
 
 
-  TAG ROUTING
+TAG ROUTING
   -------
 
   
