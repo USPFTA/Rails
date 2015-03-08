@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_many :games, through: :players
   has_many :players
-  has_one :flag
+  has_many :flags, through: :players
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

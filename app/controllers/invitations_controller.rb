@@ -50,7 +50,7 @@ class InvitationsController < ApplicationController
       @invitation.destroy
       render json: {:game => @game}, status: :accepted
     else
-      render json: {:errors => [@game.errors.full_messages, @invitation.errors.full_messages, @user.errors.full_messages]}, status: :unprocessable_entity
+      render json: {:error => [@game.errors.full_messages, @invitation.errors.full_messages, @user.errors.full_messages]}, status: :unprocessable_entity
     end
   end
 
@@ -59,7 +59,7 @@ class InvitationsController < ApplicationController
     if @invitation.destroy
       render json: {:invitation => nil}, status: :accepted
     else
-      render json: {:errors => @invitation.errors.full_messages}, status: :unprocessable_entity
+      render json: {:error => @invitation.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
