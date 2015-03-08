@@ -14,6 +14,8 @@ gem 'puma'
 gem 'rack-cors'
 gem 'geocoder'
 gem 'paperclip'
+gem 'aws-sdk', '~> 1'
+
 
 group :development do
   gem 'pry'
