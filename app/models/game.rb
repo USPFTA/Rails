@@ -15,6 +15,9 @@ class Game < ActiveRecord::Base
 
   validates_length_of :users, maximum: 10
 
+#  validates :user_id, uniqueness: {scope: :users}
+
+
 
 
   def set_end_time!
