@@ -133,7 +133,7 @@ INVITATION ROUTING
 To send Invitations to Users
 -------
 
-  POST /invitations/new
+  POST /invitations
 
       JSON requested: {inviter_id (will be current user's ID): integer, invited_id: integer, game_id: integer}
 
