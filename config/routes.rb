@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/games/:id', to: 'games#show'
   post '/games/new', to: 'games#create'
   get '/games/:id/admin', to: 'games#index'
+  get '/games/:id/ios', to: 'games#index'
   post '/games/:id/finished', to: 'games#finished'
 
   get  '/invitations/users/:id', to: 'invitations#my_invitations'

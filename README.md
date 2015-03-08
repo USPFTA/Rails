@@ -93,6 +93,8 @@ To create a game
 
       JSON returned: {error: {list of errors thrown}}, status: :unprocessable_entity (status 422)
 
+To view an individual game (from a PC)
+-------
 
   GET /games/:id/admin
 
@@ -107,17 +109,29 @@ To create a game
                           starts_at: timestamp, 
                           ends_at: timestamp}, 
                       players: {
-                              user: {
+                              player: {
                                   id: integer, 
                                   email: string, 
                                   username: string}
-                              user: {
+                              player: {
                                   id: integer, 
                                   email: string, 
                                   username: string}
                                   }
                                 }
                             }
+                      flags: {
+                              flag: {
+                                  flag_id: integer,
+                                  player_id: integer,
+                                  flag_lat: decimal,
+                                  flag_long: decimal},
+                              flag: {
+                                  flag_id: integer,
+                                  player_id: integer,
+                                  flag_lat: decimal,
+                                  flag_long: decimal}
+                              }
                         } status: :ok (status 200)
 
     else
@@ -133,7 +147,7 @@ INVITATION ROUTING
 To send Invitations to Users
 -------
 
-  POST /invitations/new
+  POST /invitations
 
       JSON requested: {inviter_id (will be current user's ID): integer, invited_id: integer, game_id: integer}
 
