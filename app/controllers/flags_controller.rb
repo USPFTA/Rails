@@ -4,7 +4,8 @@ class FlagsController < ApplicationController
 
   def create
     @player = current_user.players.last
-    @flag = Flag.new(flag_params)
+    @flag = Flag.new(flag_params.except(:name))
+    @flag.name = flag_params(:name)
     @flag.player_id = @player.id
     flag_coordinates = [@flag.flag_lat, @flag.flag_long]
     @game = @player.game
@@ -23,7 +24,7 @@ class FlagsController < ApplicationController
   def destroy
     @flag = Flag.find(params[:id])
     if @flag.destroy
-      render json: {flag: nil}, status: 200
+      render json: {flag: nil}, status: :ok
     else
       render json: {:error => @flag.errors.full_messages}, status: :unprocessable_entity
     end
