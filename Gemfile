@@ -13,6 +13,8 @@ gem 'pg'
 gem 'puma'
 gem 'rack-cors'
 gem 'geocoder'
+gem 'paperclip'
+
 group :development do
   gem 'pry'
   gem 'better_errors'
