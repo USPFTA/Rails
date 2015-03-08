@@ -93,7 +93,7 @@ To create a game
 
       JSON returned: {error: {list of errors thrown}}, status: :unprocessable_entity (status 422)
 
-To view an individual game (from a PC)
+To view an individual game (from PC)
 -------
 
   GET /games/:id/admin
@@ -150,7 +150,64 @@ To view an individual game (from a PC)
 
       JSON returned: {error: {errors thrown}}, status: :unprocessable_entity (status 422)
 
+To View an Individual Game (from iOS)
+-------
 
+  GET /games/:id
+
+      JSON requested: only authentication_token
+
+    if authenticated
+
+      JSON returned: {game: {
+                          center_lat: up to 6 decimal places, 
+                          center_long: up to 6 decimal places, 
+                          radius: up to 3 decimal places, 
+                          starts_at: timestamp, 
+                          ends_at: timestamp}, 
+                      users: {
+                              user: {
+                                  id: integer, 
+                                  email: string, 
+                                  username: string}
+                              user: {
+                                  id: integer, 
+                                  email: string, 
+                                  username: string}
+                                  }
+                                }
+                            },
+                      players: {
+                              player: {
+                                  id: integer
+                                  score: integer
+                                  user_id: integer
+                                  game_id: integer},
+                              player: {
+                                  id: integer
+                                  score: integer
+                                  user_id: integer
+                                  game_id: integer}
+                                },
+                      flags: {
+                              flag: {
+                                  flag_id: integer,
+                                  player_id: integer,
+                                  flag_lat: decimal,
+                                  flag_long: decimal},
+                              flag: {
+                                  flag_id: integer,
+                                  player_id: integer,
+                                  flag_lat: decimal,
+                                  flag_long: decimal}
+                              }
+                        } status: :ok (status 200)
+
+    else
+
+      JSON returned: {error: {errors thrown}}, status: :unprocessable_entity (status 422)
+      
+      
 
 INVITATION ROUTING
 ========
