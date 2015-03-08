@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user_from_token!
+  before_action :authenticate_user_from_token!, :only => [:show]
 
   def show
     @user = current_user

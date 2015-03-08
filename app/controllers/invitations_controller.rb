@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
   before_action :authenticate_user_from_token!
-  before_action :set_invitation, :only => [:accept_invitation, :decline_invitation]
+  # before_action :set_invitation, :only => [:accept_invitation, :decline_invitation]
 
   def create
     @invitation = Invitation.new(invitation_params)
@@ -41,7 +41,9 @@ class InvitationsController < ApplicationController
   end
 
 
+
   def accept_invitation
+    @invitation = Invitation.find(invitation_params[:id])
     @game = Game.find(@invitation.game_id)
     if @game.users << current_user
       current_user.in_game = true
@@ -71,7 +73,7 @@ class InvitationsController < ApplicationController
       end
 
       def invitation_params
-        params.require(:invitation).permit(:inviter_id, :invited_id, :game_id)
+        params.require(:invitation).permit(:id, :inviter_id, :invited_id, :game_id)
       end
 
       def as_json(opts={})
