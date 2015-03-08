@@ -79,7 +79,7 @@ Rails.application.configure do
     port: 587,
     domain: "tiy-hackathon.herokuapp.com",
     :user_name            => "tiy.hackathon@gmail.com",
-    :password             => "hackathon",
+    :password             => "hackathon1",
     authentication: "plain",
     enable_starttls_auto: true,
   }

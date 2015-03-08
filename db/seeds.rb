@@ -14,11 +14,11 @@ Player.delete_all
 
 
 puts 'creating users'
-a=User.create(email:  'evan@user.com', password: 'password', username: 'evan', authentication_token: '123' )
-b=User.create(email: 'bob@user.com', password: 'password', username: 'bob')
-c=User.create(email: 'matt@user.com', password: 'password', username: 'matt')
-d=User.create(email: 'stephen@user.com', password: 'password', username: 'stephen')
-e=User.create(email: 'mollie@user.com', password: 'password', username: 'mollie')
+a=User.create(email:  'ssettle@gmail.com', password: 'password', username: 'evan', authentication_token: '123' )
+b=User.create(email: 'huhmanbeing@gmail.com', password: 'password', username: 'bob')
+c=User.create(email: 'evankoch@gmail.com', password: 'password', username: 'matt')
+d=User.create(email: 'locksleycollie@gmail.com', password: 'password', username: 'stephen')
+e=User.create(email: 'gregpachman@gmail.com', password: 'password', username: 'mollie')
 f=User.create(email: 'taco@user.com', password: 'password', username: 'taco')
 
 
