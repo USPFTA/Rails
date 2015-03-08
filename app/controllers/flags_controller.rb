@@ -5,6 +5,7 @@ class FlagsController < ApplicationController
   def create
     @player = current_user.players.last
     @flag = Flag.new(flag_params)
+    @flag.player_id = @player.id
     flag_coordinates = [@flag.flag_lat, @flag.flag_long]
     @game = @player.game
     if @flag.within_boundary(flag_coordinates, @game)
@@ -22,10 +23,15 @@ class FlagsController < ApplicationController
   def destroy
     @flag = Flag.find(params[:id])
     if @flag.destroy
-      render json: {}, status: 200
+      render json: {flag: nil}, status: 200
     else
-      render json: { error: "could not delete flag." }, status: :unprocessable_entity
+      render json: {:error => @flag.errors.full_messages}, status: :unprocessable_entity
     end
+  end
+
+  def index
+    # @flags = Flag.where()
+    # do this shit when you're slightly more awake
   end
 
 
@@ -36,7 +42,7 @@ class FlagsController < ApplicationController
     end
   
     def flag_params
-      params.require(:flag).permit(:name, :player_id, :flag_lat, :flag_long)
+      params.require(:flag).permit(:name, :flag_lat, :flag_long)
     end
 
 end
