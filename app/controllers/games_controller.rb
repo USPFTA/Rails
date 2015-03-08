@@ -34,9 +34,9 @@ class GamesController < ApplicationController
 
   def show
     if @game
-      render json: {:game => @game}, status: :ok
+      render json: {:game => @game, :users => @game.users, :players => @game.players, :flags => @game.flags}, status: :ok
     else
-      render json: {:error => 'There is no game matching that ID'}, status: :unprocessable_entity
+      render json: {:game => nil}, status: :unprocessable_entity
     end
   end
 
@@ -47,6 +47,7 @@ class GamesController < ApplicationController
       render json: {:game => nil}, status: :unprocessable_entity
     end
   end
+
 
   def finished
     if @game.finished?
