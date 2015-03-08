@@ -30,8 +30,8 @@ class FlagsController < ApplicationController
       super(:only => [:player_id, :flag_lat, :flag_long])
     end
   
-  def flag_params
-    params.require(:flag).permit(:player_id, :flag_lat, :flag_long)
-  end
+    def flag_params
+      params.require(:flag).permit(:player_id, :flag_lat, :flag_long)
+    end
 
 end

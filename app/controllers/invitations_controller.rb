@@ -1,6 +1,5 @@
 class InvitationsController < ApplicationController
   before_action :authenticate_user_from_token!
-  # before_action :set_invitation, :only => [:accept_invitation, :decline_invitation]
 
   def create
     @invitation = Invitation.new(invitation_params)
@@ -68,10 +67,6 @@ class InvitationsController < ApplicationController
 
 
     private
-
-      def set_invitation
-        @invitation = Invitation.find(params[:id])
-      end
 
       def invitation_params
         params.require(:invitation).permit(:id, :inviter_id, :invited_id, :game_id)
