@@ -43,7 +43,7 @@ class InvitationsController < ApplicationController
 
 
   def accept_invitation
-    @invitation = Invitation.find(invitation_params[:id])
+    @invitation = Invitation.find(params[:id])
     @game = Game.find(@invitation.game_id)
     if @game.users << current_user
       current_user.in_game = true
