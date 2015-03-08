@@ -48,7 +48,7 @@ To create a new user
 
     else
 
-      status: {errors: {errors thrown}}, status: :ok
+      status: {error: {errors thrown}}, status: :ok
 
 To view a list of all users
 -------
@@ -69,7 +69,7 @@ To view an individual user's information
 
     else
 
-      JSON returned: {errors: {errors thrown}}, status: :unprocessable_entity (status 422)
+      JSON returned: {error: {errors thrown}}, status: :unprocessable_entity (status 422)
 
 
 To sign in a user
@@ -85,7 +85,7 @@ To sign in a user
 
     else
 
-      JSON returned: {errors: {errors thrown}}, status: unprocessable_entity (status 422)
+      JSON returned: {error: {errors thrown}}, status: unprocessable_entity (status 422)
 
 
 
@@ -106,7 +106,7 @@ To create a game
 
     else
 
-      JSON returned: {errors: {list of errors thrown}}, status: :unprocessable_entity (status 422)
+      JSON returned: {error: {list of errors thrown}}, status: :unprocessable_entity (status 422)
 
 
   GET /games/:id/admin
@@ -137,7 +137,12 @@ To create a game
 
     else
 
-      JSON returned: {errors: {errors thrown}}, status: :unprocessable_entity (status 422)
+      JSON returned: {error: {errors thrown}}, status: :unprocessable_entity (status 422)
+
+
+
+  INVITATION ROUTING
+  -------
 
 
 To send Invitations to Users
@@ -153,7 +158,7 @@ To send Invitations to Users
 
     else
 
-      JSON returned: {errors: {all errors thrown}}, status: :unprocessable_entity (status 422)
+      JSON returned: {error: {all errors thrown}}, status: :unprocessable_entity (status 422)
 
 
 iOS - To View All of User's Invitations
@@ -201,11 +206,11 @@ iOS - To Accept an Invitation
                                   email: string, 
                                   username: string}
                             }
-                        }                              
+                        }, status: :ok (status 200)                             
 
     else
 
-      JSON returned: {errors: {errors thrown}}, status: :unprocessable_entity (status 422)
+      JSON returned: {error: {errors thrown}}, status: :unprocessable_entity (status 422)
 
 
 iOS - To Decline an Invitation
@@ -221,8 +226,67 @@ iOS - To Decline an Invitation
 
     else
 
-      JSON returned: {errors: {errors thrown}}, status: :unprocessable_entity (status 422)
+      JSON returned: {error: {errors thrown}}, status: :unprocessable_entity (status 422)
 
+
+
+  FLAG ROUTING
+  -------
+
+
+iOS - To Place a Flag
+-------
+
+  POST /flags
+
+      JSON requested: {flag: {name: string, flag_lat: decimal, flag_long: decimal}}
+
+    if created
+
+      JSON returned: {flag: {name: string, flag_lat: decimal, flag_long: decimal, player_id: integer}}, status: :created (status 201)
+
+    else
+
+      JSON returned: {error: {errors thrown}}, status: :unprocessable_entity (status 422)
+
+
+iOS - To Delete a Flag (before game starts)
+-------
+
+  DELETE /flags/:id
+
+    if successful
+
+      JSON returned: {flag: nil}, status: :ok (status 200)
+
+    else
+
+      JSON returned: {error: {errors thrown}}, status: :unprocessable_entity (status 422)
+
+
+
+  TAG ROUTING
+  -------
+
+  
+iOS - To Tag a Flag
+-------
+
+  POST /tags
+
+    A user cannot tag their own flag! This will throw a Forbidden 403 error!
+
+      JSON requested: {tag: {flag_id: integer}}
+
+    if successful
+
+      JSON returned: {tag: {id: integer, flag_id: integer, player_id: integer}}, status: :created (status 201)
+
+    else
+
+      JSON returned: {error: {errors thrown}}, status: :unprocessable_entity (status 422)
+
+      
 
 
 
