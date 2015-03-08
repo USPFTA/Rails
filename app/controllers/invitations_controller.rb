@@ -75,7 +75,7 @@ class InvitationsController < ApplicationController
       end
 
       def as_json(opts={})
-        super(:only => [:inviter_id, :invited_id, :game_id])
+        super(:only => [:invitation_id, :inviter_id, :invited_id, :game_id])
       end
 
 end
